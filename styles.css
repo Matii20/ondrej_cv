@@ -200,28 +200,89 @@ body {
     margin: 0 auto;
 }
 
+/* Gallery Grid - First Row (Small Items) */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
     margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+/* Gallery Grid - Second Row (Large Items) */
+.gallery-grid.large-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 80px;
 }
 
 .gallery-item {
-    background: #1a1a1a;
-    border-radius: 10px;
-    overflow: hidden;
     transition: transform 0.3s ease;
-    height: 250px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #666;
-    font-size: 18px;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.gallery-item.large {
+    padding: 40px;
 }
 
 .gallery-item:hover {
     transform: translateY(-10px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transform: scale(0.95);
+}
+
+.gallery-item.large img {
+    height: 400px;
+    object-fit: contain;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Individuálne nastavenia pre konkrétne fotky */
+.gallery-item img[src="lampa.jpeg"],
+.gallery-item img[src="lampa II.jpg"] {
+    object-position: center center;
+    transform: scale(0.85);
+}
+
+.gallery-item img[src="vazy.jpeg"] {
+    object-position: center center;
+    transform: scale(0.8);
+}
+
+.gallery-item img[src="prestieranie.jpeg"] {
+    object-position: center top;
+    transform: scale(0.85);
+}
+
+.gallery-item div,
+.gallery-item p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 15px;
+    background: transparent;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
 }
 
 /* Animations */
@@ -262,5 +323,21 @@ body {
     
     .hero-content {
         margin-left: 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-grid.large-items {
+        grid-template-columns: 1fr;
+    }
+    
+    .gallery-item {
+        padding: 20px;
+    }
+    
+    .gallery-item.large {
+        padding: 30px;
     }
 }
